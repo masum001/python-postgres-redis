@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:14.1-alpine
+    container_name: 'projectdb'
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
